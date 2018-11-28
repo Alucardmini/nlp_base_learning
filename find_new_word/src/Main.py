@@ -10,22 +10,30 @@
 """
 import pandas as pd
 import numpy as np
+import jieba
+import codecs
 
 class Findnewwords(object):
 
     def __init__(self, data_path, min_count=10, max_step=4):
         self.max_step = max_step
         self.min_count = min_count
-        self.src_content_list = self.loaddatafromPath(data_path)
+        self.src_content_list = self.load_data_from_path(data_path)
 
-    def loaddatafromPath(self, data_path):
-        with open(data_path, 'r')as f:
-            src_content = ''.join(f.readlines())
-        src_content_list = list(src_content)
+    @staticmethod
+    def load_data_from_path(data_path):
+        src_content = open(data_path, 'r').read()
 
-        src_count_list = pd.Series(src_content_list).value_counts()
-        return src_content_list
+        with open('../data/chineseStopWords.txt', 'r', encoding='utf-8')as f:
+            lines = f.readlines()
+            stop_list = [x.strip() for x in lines]
+        src_content_list = [x.strip() for x in list(src_content) if x not in stop_list]
+        data = pd.Series(src_content_list).value_counts()
+        return data
+
+    def pre_process(self):
+        pass
 
 
 if __name__ == '__main__':
-    pass
+    print(Findnewwords.load_data_from_path('../data/tlbb.txt'))
