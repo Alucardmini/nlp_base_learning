@@ -25,12 +25,13 @@ class Findnewwords(object):
 
     def load_data_from_path(self, data_path):
         src_content = open(data_path, 'r').read()
-
+        src_content = src_content.replace(u'\u3000', u'').replace(u'：', u'')
+        data = []
         with open('../data/chineseStopWords.txt', 'r', encoding='utf-8')as f:
             lines = f.readlines()
             stop_list = [x.strip() for x in lines]
         src_content_list = [x.strip() for x in list(src_content) if x not in stop_list]
-        data = [].append(pd.Series(src_content_list).value_counts())
+        data.append(pd.Series(src_content_list).value_counts())
 
         vocabulary_sum = data[0].sum()
 
@@ -39,7 +40,7 @@ class Findnewwords(object):
         myre = {2: '(..)', 3: '(...)', 4: '(....)', 5: '(.....)', 6: '(......)', 7: '(.......)'}
 
         for m in range(2, self.max_step + 1):
-            print(u'生成 % 字词 ...' % m)
+            print(u'生成 %s 字词 ...' % m)
             data.append([])
             for i in range(m):
                 data[m - 1] = data[m-1] + re.findall(myre[m], src_content[i:])
@@ -49,9 +50,11 @@ class Findnewwords(object):
 
             process_data = data[m-1][:]
             for k in range(m - 1):
+
                 qq = np.array(list(
                     map(lambda ms: vocabulary_sum * data[m - 1][ms] / data[m - 2 - k][ms[:m - 1 - k]] / data[k][ms[m - 1 - k:]],
                         process_data.index))) > self.min_support  # 最小支持度筛选。
+
                 process_data = process_data[qq]
             rt.append(process_data.index)
 
