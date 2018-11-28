@@ -27,6 +27,7 @@ class Sentiment_analysis(object):
         self.batch_size = batch_size
         self.train_num = train_num
         self.pos, self.neg, self.all_ = self.load_data()
+        self.vocabulary_series = None
 
     def load_data(self):
         pos = pd.read_excel(self.pos_path, header=None)
@@ -36,9 +37,35 @@ class Sentiment_analysis(object):
         all_ = pos.append(neg, ignore_index=True)
         return pos, neg, all_
 
+    def pre_process(self):
+        # 拼接语料
+        content = ''.join(self.all_[0])
+        # 按个数序列化全文
+        vocabulary_series = pd.Series(list(content)).value_counts()
+        vocabulary_series = vocabulary_series[vocabulary_series > self.min_count]
+        vocabulary_series[:] = list(range(1, len(vocabulary_series) + 1))
+        # 空字符串补全
+        vocabulary_series[''] = 0
+        self.vocabulary_series = vocabulary_series
+        word_set = set(vocabulary_series.index)
+
+        def doc2num(s, maxlen):
+            s = [i for i in s if i in word_set]
+            s = s[:maxlen] + ['']*max(0, maxlen - len(s))
+            return list(vocabulary_series[s])
+
+        self.all_['doc2num'] = self.all_[0].apply(lambda s: doc2num(s, self.maxlen))
+        # shuffle data 打乱数据
+        idx = list(range(len(self.all_)))
+        np.random.shuffle(idx)
+        self.all_ = self.all_.loc[idx]
+        x_train = np.array(list(self.all_['doc2num']))
+        y_train = np.array(list(self.all_['label'])).reshape((-1, 1))
+        return x_train, y_train
+
     def build_lstm_data(self):
         model = Sequential()
-        model.add(Embedding(), 256)
+        model.add(Embedding(len(self.vocabulary_series), 256))
         model.add(LSTM(128))
         model.add(Dropout(0.5))
         model.add(Dense(1))
@@ -49,5 +76,15 @@ class Sentiment_analysis(object):
         return model
 
     def open_fire(self):
-        model = self.buildLstmModel()
-        model.fit()
+        x_train, y_train = self.pre_process()
+        model = self.build_lstm_data()
+        train_num = 15000
+        model.fit(x_train[:train_num], y_train[:train_num], batch_size=self.batch_size, nb_epoch=30)
+        score = model.evaluate(x_train[train_num:], y_train[train_num:], batch_size=self.batch_size)
+        print(score)
+
+
+if __name__ == '__main__':
+    sense_analysis_app = Sentiment_analysis(pos_path='../data/pos.xls',
+                                             neg_path='../data/pos.xls')
+    sense_analysis_app.open_fire()
