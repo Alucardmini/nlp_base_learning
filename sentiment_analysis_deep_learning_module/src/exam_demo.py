@@ -12,26 +12,30 @@
 import pandas as pd
 import numpy as np
 
-if __name__ == '__main__':
-    content = '你好呀李银河， 李银河呀李银河'
-    # print(list(content))
-    # abc = pd.Series(list(content))
-    # print(abc)
-    # abc = abc.value_counts()
-    # print(abc)
 
-    abc = pd.Series(list(content)).value_counts()
-    abc = abc[abc > 2]
-    print(abc)
-    # 贴序号
-    abc[:] = list(range(1, len(abc) + 1))
-    print(abc)
-    abc[''] = 0
-    word_set = set(abc.index)
+pos = pd.read_excel('../data/pos.xls', header=None)
+neg = pd.read_excel('../data/neg.xls', header=None)
+pos['label'] = 1
+neg['label'] = 0
+all_ = pos.append(neg)
 
-    def doc2num(s, maxlen):
-        s = [i for i in s if i in word_set]
-        s = s[:maxlen] + ['']*max(0, maxlen - len(s))
-        return list(abc[s])
+content = ''.join(all_[0])
+abc = list(content)
+abc = pd.Series(abc).value_counts()
+abc = abc[abc > 2]
+print(abc)
+abc[''] = 0
+# print(abc)
+word_set = set(abc.index)
+print(word_set)
 
-    print(doc2num(word_set, 20))
+def doc2num(doc, maxlen):
+    doc = [i for i in doc if i in word_set]
+    doc = doc[:maxlen] + ['']*max(0, maxlen - len(doc))
+    return list(abc[doc])
+
+all_['doc2num'] = all_[0].apply(lambda s : doc2num(s, 300))
+
+x = np.array(list(all_['doc2num']))
+y = np.array(list(all_['label']))
+y = y.reshape((-1, 1))
