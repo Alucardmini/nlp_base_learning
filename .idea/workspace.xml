@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c6a3c88-6148-46e0-a37b-c24f97235134" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/one_hot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/NLP.iml" afterPath="$PROJECT_DIR$/.idea/NLP.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/Main.py" afterPath="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/Main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/exam_demo.py" afterPath="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/exam_demo.py" />
     </list>
     <ignored path="NLP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,31 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sense_analysis.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sense/src/sense_analysis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sense_category.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sense/src/sense_category.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="66" column="28" lean-forward="true" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+            <state relative-caret-position="142">
+              <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
               <folding>
                 <element signature="e#79#98#0" expanded="true" />
               </folding>
@@ -64,53 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="interfaces.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/JH_App/opt/Python-3.6.2/lib/python3.6/site-packages/keras/legacy/interfaces.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/JH_App/opt/Python-3.6.2/lib/python3.6/site-packages/h5py/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="one_hot.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/one_hot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="24" column="36" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="36" />
-              <folding>
-                <element signature="e#295#313#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="frame.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/JH_App/opt/Python-3.6.2/lib/python3.6/site-packages/pandas/core/frame.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="2664" column="0" lean-forward="false" selection-start-line="2664" selection-start-column="0" selection-end-line="2664" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="exam_demo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/exam_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+            <state relative-caret-position="180">
+              <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
               <folding>
                 <element signature="e#174#193#0" expanded="true" />
               </folding>
@@ -118,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="series.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/JH_App/opt/Python-3.6.2/lib/python3.6/site-packages/pandas/core/series.py">
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/JH_App/opt/Python-3.6.2/lib/python3.6/site-packages/pandas/core/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="3193" column="0" lean-forward="false" selection-start-line="3193" selection-start-column="0" selection-end-line="3193" selection-end-column="0" />
+            <state relative-caret-position="35">
+              <caret line="1007" column="8" lean-forward="false" selection-start-line="1007" selection-start-column="8" selection-end-line="1007" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -147,8 +81,8 @@
         <option value="$PROJECT_DIR$/sense/src/sense_analysis.py" />
         <option value="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/one_hot.py" />
         <option value="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/test_demo.py" />
-        <option value="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/exam_demo.py" />
         <option value="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/Main.py" />
+        <option value="$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/exam_demo.py" />
       </list>
     </option>
   </component>
@@ -159,10 +93,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="268" />
-    <option name="y" value="24" />
+    <option name="x" value="488" />
+    <option name="y" value="92" />
     <option name="width" value="1301" />
-    <option name="height" value="744" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -282,7 +216,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Main">
+  <component name="RunManager" selected="Python.exam_demo">
     <configuration default="false" name="sense_category" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -486,8 +420,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.exam_demo" />
+        <item index="0" class="java.lang.String" itemvalue="Python.exam_demo" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Main" />
         <item index="2" class="java.lang.String" itemvalue="Python.one_hot" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in test_demo.py" />
         <item index="4" class="java.lang.String" itemvalue="Python.sense_category" />
@@ -541,19 +475,20 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="268" y="24" width="1301" height="744" extended-state="0" />
+    <frame x="488" y="92" width="1301" height="728" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25655282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4949495" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49307957" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36334404" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3633218" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.299444" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.299444" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -607,7 +542,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="29" />
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -753,29 +688,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/JH_App/opt/Python-3.6.2/lib/python3.6/site-packages/pandas/core/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="919" column="0" lean-forward="false" selection-start-line="919" selection-start-column="0" selection-end-line="919" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/JH_App/opt/Python-3.6.2/lib/python3.6/site-packages/pandas/core/frame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="2664" column="0" lean-forward="false" selection-start-line="2664" selection-start-column="0" selection-end-line="2664" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/exam_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding>
-            <element signature="e#174#193#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -805,10 +722,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/JH_App/opt/Python-3.6.2/lib/python3.6/site-packages/pandas/core/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="1007" column="8" lean-forward="false" selection-start-line="1007" selection-start-column="8" selection-end-line="1007" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/exam_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+          <folding>
+            <element signature="e#174#193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sentiment_analysis_deep_learning_module/src/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="66" column="28" lean-forward="true" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+        <state relative-caret-position="142">
+          <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
           <folding>
             <element signature="e#79#98#0" expanded="true" />
           </folding>

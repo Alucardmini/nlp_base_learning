@@ -75,9 +75,22 @@ class Sentiment_analysis(object):
                       metrics=['accuracy'])
         return model
 
+    def build_one_embedding_model(self):
+        model = Sequential()
+        model.add(Embedding(len(self.vocabulary_series), 256, input_length=self.maxlen))
+        model.add(LSTM(128))
+        model.add(Dropout(0.5))
+        model.add(Dense(1))
+        model.add(Activation('sigmoid'))
+        model.compile(loss='binary_crossentropy',
+                      optimizer='adam',
+                      metrics=['accuracy'])
+        return model
+
     def open_fire(self):
         x_train, y_train = self.pre_process()
-        model = self.build_lstm_data()
+        # model = self.build_lstm_data()
+        model = self.build_one_embedding_model()
         train_num = 15000
         model.fit(x_train[:train_num], y_train[:train_num], batch_size=self.batch_size, nb_epoch=30)
         score = model.evaluate(x_train[train_num:], y_train[train_num:], batch_size=self.batch_size)
