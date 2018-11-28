@@ -19,7 +19,7 @@ from keras.layers.recurrent import LSTM, GRU
 
 class Sentiment_analysis(object):
 
-    def __init__(self, pos_path, neg_path, maxlen=200, min_count=20, batch_size=128, train_num=1000):
+    def __init__(self, pos_path, neg_path, maxlen=200, min_count=5, batch_size=128, train_num=1000):
         self.pos_path = pos_path
         self.neg_path = neg_path
         self.maxlen = maxlen
@@ -92,8 +92,10 @@ class Sentiment_analysis(object):
         # model = self.build_lstm_data()
         model = self.build_one_embedding_model()
         train_num = 15000
-        model.fit(x_train[:train_num], y_train[:train_num], batch_size=self.batch_size, nb_epoch=30)
+        model.fit(x_train[:train_num], y_train[:train_num], batch_size=self.batch_size, nb_epoch=1)
         score = model.evaluate(x_train[train_num:], y_train[train_num:], batch_size=self.batch_size)
+
+        print(model.metrics_names)
         print(score)
 
 
