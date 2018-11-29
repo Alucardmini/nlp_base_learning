@@ -39,6 +39,11 @@ class Findnewwords(object):
         # 为了方便调用，自定义了一个正则表达式的词典
         myre = {2: '(..)', 3: '(...)', 4: '(....)', 5: '(.....)', 6: '(......)', 7: '(.......)'}
 
+        def cal_support(ms):
+            if ms in data[m - 1]:
+                return vocabulary_sum * data[m - 1][ms] / data[m - 2 - k][ms[:m - 1 - k]] / data[k][ms[m - 1 - k:]]
+
+
         for m in range(2, self.max_step + 1):
             print(u'生成 %s 字词 ...' % m)
             data.append([])
@@ -52,8 +57,7 @@ class Findnewwords(object):
             for k in range(m - 1):
 
                 qq = np.array(list(
-                    map(lambda ms: vocabulary_sum * data[m - 1][ms] / data[m - 2 - k][ms[:m - 1 - k]] / data[k][ms[m - 1 - k:]],
-                        process_data.index))) > self.min_support  # 最小支持度筛选。
+                    map(lambda ms: cal_support(ms), process_data.index))) > self.min_support  # 最小支持度筛选。
 
                 process_data = process_data[qq]
             rt.append(process_data.index)
