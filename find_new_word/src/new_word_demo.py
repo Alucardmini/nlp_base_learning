@@ -46,7 +46,7 @@ for m in range(2, max_sep + 1):
     t[m - 1] = t[m - 1][t[m - 1] > min_count]  # 最小次数筛选
     tt = t[m - 1][:]
     for k in range(m - 1):
-        qq = np.array(list(map(lambda ms: tsum * t[m - 1][ms] / t[m - 2 - k][ms[:m - 1 - k]] / t[k][ms[m - 1 - k:]],
+        qq = np.array(list(map(lambda ms: tsum * t[m - 1][ms] / (t[m - 2 - k][ms[:m - 1 - k]] * t[k][ms[m - 1 - k:]]),
                                tt.index))) > min_support  # 最小支持度筛选。
         tt = tt[qq]
     rt.append(tt.index)
