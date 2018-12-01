@@ -61,7 +61,11 @@ for i in range(2, max_sep + 1):
     pp = []  # 保存所有的左右邻结果
     for j in range(i + 2):
         pp = pp + re.findall('(.)%s(.)' % myre[i], s[j:])
-    pp = pd.DataFrame(pp).set_index(1).sort_index()  # 先排序，这个很重要，可以加快检索速度
+    
+    pp = pd.DataFrame(pp).set_index(1)
+    pp = pp.sort_index()
+
+    # pp = pd.DataFrame(pp).set_index(1).sort_index()  # 先排序，这个很重要，可以加快检索速度
     index = np.sort(np.intersect1d(rt[i - 2], pp.index))  # 作交集
     # 下面两句分别是左邻和右邻信息熵筛选
     index = index[np.array(list(map(lambda s: cal_S(pd.Series(pp[0][s]).value_counts()), index))) > min_s]
