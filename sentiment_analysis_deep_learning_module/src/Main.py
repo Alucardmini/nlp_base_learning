@@ -92,7 +92,7 @@ class Sentiment_analysis(object):
         # model = self.build_lstm_data()
         model = self.build_one_embedding_model()
         train_num = 15000
-        model.fit(x_train[:train_num], y_train[:train_num], batch_size=self.batch_size, nb_epoch=1)
+        model.fit(x_train[:train_num], y_train[:train_num], batch_size=self.batch_size, epochs=5)
         score = model.evaluate(x_train[train_num:], y_train[train_num:], batch_size=self.batch_size)
 
         print(model.metrics_names)

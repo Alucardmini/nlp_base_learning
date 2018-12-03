@@ -16,7 +16,7 @@ from keras.optimizers import SGD, RMSprop, Adagrad
 import pandas as pd
 import numpy as np
 
-batch_size=256
+batch_size=128
 min_count=5
 max_len=200
 
