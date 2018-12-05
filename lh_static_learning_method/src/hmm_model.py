@@ -66,31 +66,42 @@ def viterbi(nodes):
         paths_ = paths
         paths = {}
         for i in nodes[l]:
+            # i 当前节点的 "sbme"
             nows = {}
             for j in paths_:
-                if j[-1]+i in trans:
-                    nows[j+i]= paths_[j]+nodes[l][i]+trans[j[-1]+i]
-                k = nows.values().index(max(nows.values()))
-                paths[nows.keys()[k]] = nows.values()[k]
-    return paths.keys()[paths.values().index(max(paths.values()))]
+                # j 上一个节点的 "sbme"
+                if j[-1] + i in trans:
+                    nows[j + i] = paths_[j] + nodes[l][i] + trans[j[-1] + i]
+            now_key = get_key(nows, max(nows.values()))
+            paths[now_key[0]] = max(nows.values())
+    return get_key(paths, max(paths.values()))
+
+
+def get_key(dict, value):
+    return [k for k, v in dict.items() if v == value]
+
 
 def hmm_cut(s):
     nodes = [{i:log(hmm_model[i][t]+1)-log_total[i] for i in hmm_model} for t in s]
-
-    print(nodes)
-
     tags = viterbi(nodes)
-    print(tags)
-    # words = [s[0]]
-    # for i in range(1, len(s)):
-    #     if tags[i] in ['b', 's']:
-    #         words.append(s[i])
-    #     else:
-    #         words[-1] += s[i]
-    # return words
+    if len(tags) >0:
+        tags = tags[0]
+    else:
+        return
+    word = ['']
+
+    for i in range(len(tags)):
+        if tags[i] in ['b', 's']:
+            word.append(s[i])
+        else:
+            word[-1] += s[i]
+
+    return word
+
+
 
 if __name__ == '__main__':
     test_str = u'李想是一个好孩子'
-    print(hmm_cut(test_str))
+    print(' '.join(hmm_cut(test_str)))
 
 

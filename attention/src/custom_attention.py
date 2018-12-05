@@ -48,7 +48,8 @@ class Attention(Layer):
                 return inputs - (1 - mask) * 1e12
 
     def call(self, inputs, **kwargs):
-        if len(inputs) == 3:
+
+        if len(inputs) == 3:  # self attention
             Q_seq, K_seq, V_seq = inputs
             Q_len, V_len = None, None
         elif len(inputs) == 5:
