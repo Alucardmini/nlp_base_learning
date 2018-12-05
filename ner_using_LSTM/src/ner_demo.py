@@ -14,18 +14,15 @@ import sys
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
+from collections import Counter
 def main():
 
-    a = [1, 2, 3]
-    b = [4, 5, 6]
+    s = {'b': Counter()}
 
-    a = [[1], [2], [3]]
-    b = [[4], [5], [6]]
-
-    c = np.vstack((a, b))
-    print(c)
-
-
+    print(s)
+    s['b']['a'] += 20
+    s['b']['d'] = 30
+    print(s)
 
 if __name__ == "__main__":
     main()
