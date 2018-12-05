@@ -16,18 +16,14 @@ import numpy as np
 import pandas as pd
 def main():
 
-    pd_data = pd.DataFrame(np.random.rand(7, 5), index=list('ABCDEFG'))
-    print(pd_data)
+    a = [1, 2, 3]
+    b = [4, 5, 6]
 
-    vocab_index = np.array(list('ABCDEFG'))
-    np.random.shuffle(vocab_index)
-    print(vocab_index)
-    data = pd_data.loc[vocab_index]
-    data.index = list('HIJKLMN')
-    data.index = list('ABCDEFG')
-    print(data)
+    a = [[1], [2], [3]]
+    b = [[4], [5], [6]]
 
-
+    c = np.vstack((a, b))
+    print(c)
 
 
 

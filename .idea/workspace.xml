@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c6a3c88-6148-46e0-a37b-c24f97235134" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ner_using_LSTM/src/Main.py" afterPath="$PROJECT_DIR$/ner_using_LSTM/src/Main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ner_using_LSTM/src/custom_ner.py" afterPath="$PROJECT_DIR$/ner_using_LSTM/src/custom_ner.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ner_using_LSTM/src/ner_demo.py" afterPath="$PROJECT_DIR$/ner_using_LSTM/src/ner_demo.py" />
     </list>
     <ignored path="NLP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,8 +36,8 @@
       <file leaf-file-name="custom_ner.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ner_using_LSTM/src/custom_ner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="86" column="23" lean-forward="false" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
+            <state relative-caret-position="325">
+              <caret line="133" column="6" lean-forward="false" selection-start-line="133" selection-start-column="6" selection-end-line="133" selection-end-column="6" />
               <folding>
                 <element signature="e#173#192#0" expanded="true" />
               </folding>
@@ -66,11 +67,9 @@
       <file leaf-file-name="ner_demo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ner_using_LSTM/src/ner_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-              <folding>
-                <element signature="e#170#179#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1">
+              <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -127,8 +126,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="321" />
-    <option name="y" value="149" />
+    <option name="x" value="312" />
+    <option name="y" value="67" />
     <option name="width" value="1301" />
     <option name="height" value="728" />
   </component>
@@ -265,7 +264,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.custom_ner">
+  <component name="RunManager" selected="Python.ner_demo">
     <configuration default="false" name="sense_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -472,8 +471,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.custom_ner" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ner_demo" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ner_demo" />
+        <item index="1" class="java.lang.String" itemvalue="Python.custom_ner" />
         <item index="2" class="java.lang.String" itemvalue="Python.Main (1)" />
         <item index="3" class="java.lang.String" itemvalue="Python.Main" />
         <item index="4" class="java.lang.String" itemvalue="Python.sense_analysis" />
@@ -530,13 +529,13 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="321" y="149" width="1301" height="728" extended-state="0" />
+    <frame x="312" y="67" width="1301" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27799842" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27799842" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43079585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28373703" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -971,16 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ner_using_LSTM/src/ner_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-          <folding>
-            <element signature="e#170#179#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ner_using_LSTM/data/opendata_20w">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="-171729">
@@ -996,10 +985,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ner_using_LSTM/src/ner_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ner_using_LSTM/src/custom_ner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="86" column="23" lean-forward="false" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
+        <state relative-caret-position="325">
+          <caret line="133" column="6" lean-forward="false" selection-start-line="133" selection-start-column="6" selection-end-line="133" selection-end-column="6" />
           <folding>
             <element signature="e#173#192#0" expanded="true" />
           </folding>

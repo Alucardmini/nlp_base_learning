@@ -93,3 +93,42 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 
 gen_matrix = lambda z: np.vstack((word2vec[z[:maxlen]], np.zeros((maxlen-len(z[:maxlen]), word_size))))
 gen_target = lambda z: np_utils.to_categorical(np.array(z[:maxlen] + [0]*(maxlen-len(z[:maxlen]))), 5)
+
+def data_generator(data, targets, batch_size):
+    idx = np.arange(len(data))
+    np.random.shuffle(idx)
+    batches = [idx[range(batch_size * i, min(len((data), batch_size*(i+1))))] for i in range(len(data)/batch_size + 1)]
+    while True:
+        for i in batches:
+            xx, yy = np.array(map(gen_matrix, data[i])), np.array(map(gen_target, targets[i]))
+            yield (xx, yy)
+
+batch_size = 1024
+history = model.fit_generator(data_generator(json_data['words'], json_data['label'], batch_size), samples_per_epoch=len(json_data), nb_epoch=200)
+model.save_weights('../data/words_seq2seq_final_1.model')
+
+def predict_data(data, batch_size):
+    batches = [range(batch_size*i, min(len(data), batch_size*(i+1))) for i in range(len(data)/batch_size+1)]
+    p = model.predict(np.array(map(gen_matrix, data[batches[0]])), verbose=1)
+    for i in batches[1:]:
+        print(min(i), 'done')
+        p = np.vstack((p, model.predict(np.array(map(gen_matrix, data[i])), verbose=1)))
+    return p
+json_data['predict'] = list(predict_data(json_data['words'], batch_size))
+test_data['predict'] = list(predict_data(test_data['words'], batch_size))
+
+'''
+动态规划部分：
+1、zy是转移矩阵，用了对数概率；概率的数值是大概估计的，事实上，这个数值的精确意义不是很大。
+2、viterbi是动态规划算法。
+'''
+zy = {'00':0.15,
+      '01':0.15,
+      '02':0.7,
+      '10':1.0,
+      '23':0.5,
+      '24':0.5,
+      '33':0.5,
+      '34':0.5,
+      '40':1.0
+     }
