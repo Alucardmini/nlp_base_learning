@@ -132,3 +132,22 @@ zy = {'00':0.15,
       '34':0.5,
       '40':1.0
      }
+zy = {i: np.log(zy[i]) for i in zy.keys()}
+
+def viterbi(nodes):
+    paths = nodes[0]
+    for l in range(1,len(nodes)):
+        paths_ = paths.copy()
+        paths = {}
+    for i in nodes[l].keys():
+        nows = {}
+        for j in paths_.keys():
+            if j[-1]+i in zy.keys():
+                nows[j+i]= paths_[j]+nodes[l][i]+zy[j[-1]+i]
+        k = np.argmax(nows.values())
+        paths[nows.keys()[k]] = nows.values()[k]
+    return paths.keys()[np.argmax(paths.values())]
+
+
+def predict(i):
+    nodes = [dict(zip(['0','1','2','3','4'], k)) for k in np.log(dd['predict'][i][:len(dd['words'][i])])]
