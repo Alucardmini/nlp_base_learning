@@ -35,7 +35,10 @@ import pickle
 #                 hmm_model['e'][word[-1]] += int(line_list[1])
 #                 for i in word[1:-1]:
 #                     hmm_model['m'][i] += int(line_list[1])
-model_path = '/home/wuxikun/nlp_base/nlp_base_learning/lh_static_learning_method/data/hmm.model'
+
+model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)),
+                    'data/hmm.model')
+print(model_path)
 
 # with open(model_path, 'wb') as f:
 #     pickle.dump(hmm_model, f)
