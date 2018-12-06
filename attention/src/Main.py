@@ -13,7 +13,7 @@ from attention.src.custom_attention import Attention
 
 maxfeature = 20000
 batch_size = 32
-maxlen = 80
+maxlen = 200
 (x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=maxfeature)
 
 x_train = sequence.pad_sequences(x_train, maxlen=maxlen)
@@ -23,7 +23,8 @@ s_inputs = Input(shape=(None, ), dtype='int32')
 embeddings = Embedding(maxfeature, 128)(s_inputs)
 
 O_seq = Attention(8, 16)([embeddings, embeddings, embeddings])
-O_seq = GlobalAveragePooling1D()(O_seq)
+# O_seq = GlobalAveragePooling1D()(O_seq)
+O_seq = GlobalMaxPool1D()(O_seq)
 O_seq = Dropout(0.5)(O_seq)
 outputs = Dense(1, activation='sigmoid')(O_seq)
 
