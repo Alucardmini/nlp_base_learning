@@ -38,7 +38,6 @@ import pickle
 
 model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)),
                     'data/hmm.model')
-print(model_path)
 
 # with open(model_path, 'wb') as f:
 #     pickle.dump(hmm_model, f)
@@ -82,8 +81,9 @@ def get_key(dict, value):
 
 
 def hmm_cut(s):
-    nodes = [{i:log(hmm_model[i][t]+1)-log_total[i] for i in hmm_model} for t in s]
+    nodes = [{i: log(hmm_model[i][t] + 1) - log_total[i] for i in hmm_model} for t in s]
     tags = viterbi(nodes)
+    print(tags)
     if len(tags) >0:
         tags = tags[0]
     else:
@@ -95,13 +95,11 @@ def hmm_cut(s):
             word.append(s[i])
         else:
             word[-1] += s[i]
-
     return word
 
 
-
 if __name__ == '__main__':
-    test_str = u'李想是一个好孩子'
+    test_str = u'今天天气真好'
     print(' '.join(hmm_cut(test_str)))
 
 
