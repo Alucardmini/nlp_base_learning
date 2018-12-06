@@ -26,8 +26,9 @@ def main():
     print(max(s['b'].values()))
     # print(s['b'].fromkeys( max(s['b'].values())))
 
-    print(get_key(s['b'], max(s['b'].values())))
-
+    # print(get_key(s['b'], max(s['b'].values())))
+    k = np.argmax(s['b'].values())
+    print(list(s['b'].keys())[k])
     # print( s['b'].values().index(max(s['b'].values())))
     # student = {'小萌': '1001', '小智': '1002', '小强': '1003', '小明': '1004'}
     #

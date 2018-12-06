@@ -78,7 +78,7 @@ test_data = pd.DataFrame([test_data]).T
 test_data.columns = ['content']
 test_data = test_data[:-1]
 test_data['words'] = test_data['content'].apply(custom_cut)
-# print(test_data)
+print(test_data)
 
 import gensim
 word2vec = gensim.models.Word2Vec.load('../data/word2vec_words_final.model')
@@ -151,3 +151,23 @@ def viterbi(nodes):
 
 def predict(i):
     nodes = [dict(zip(['0','1','2','3','4'], k)) for k in np.log(dd['predict'][i][:len(dd['words'][i])])]
+    r = viterbi(nodes)
+    result = []
+    words = test_data['words'][i]
+    for j in re.finditer('2.*?4|1', r):
+        result.append((''.join(words[j.start():j.end()]), np.mean([nodes[k][r[k]] for k in range(j.start(),j.end())])))
+    if result:
+        result = pd.DataFrame(result)
+        return [result[0][result[1].argmax()]]
+    else:
+        return result
+
+test_data['core_entity'] = map(predict, tqdm(iter(test_data.index), desc=u''))
+
+'''
+导出json
+'''
+gen = lambda i:'[{"content": "'+test_data.iloc[i]['content']+'", "core_entity": ["'+''.join(test_data.iloc[i]['core_entity'])+'"]}]'
+
+ssss = map(gen, tqdm(range(len(test_data))))
+result = '\n'.join(ssss)
