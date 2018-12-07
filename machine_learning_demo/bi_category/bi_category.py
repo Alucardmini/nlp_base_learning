@@ -1,59 +1,45 @@
-#!/usr/bin/python
-#coding:utf-8
-
+# -*- coding: utf-8 -*-
 """
-@author: wuxikun
-@contact: wuxikun@bjgoodwill.com
-@software: PyCharm Community Edition
-@file: bi_category.py
-@time: 12/6/18 5:16 PM
+Created on Mon Jan  8 23:52:46 2018
+序贯模型实例
+@author: BruceWong
 """
-
-from keras.datasets import imdb
-from keras.layers import Dense, Activation, Input
-from keras.preprocessing import sequence
-from keras.models import Sequential
+#MLP的二分类：
 import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense, Dropout
+from keras.datasets import imdb
 
-batch_size = 256
-max_len = 512
+import keras.models as models
+import keras.layers as layers
 
-(x_train, y_train),(x_test, y_test) = imdb.load_data(num_words=8000)
-
-x_train = sequence.pad_sequences(sequences=x_train, maxlen=max_len)
-x_test = sequence.pad_sequences(sequences=x_test, maxlen=max_len)
-
-# https://blog.csdn.net/bqw18744018044/article/details/82598131
-def vectorize_sequences(sequences, dimension=max_len):
-# 生成25000*8000的二维Numpy数组
-    results = np.zeros((len(sequences),dimension))
-    # one-hot编码
-    for i,sequence in enumerate(sequences):
-        results[i,sequence] = 1.
-        return results
-x_train = vectorize_sequences(x_train)
-x_test = vectorize_sequences(x_test)
+(x_train, y_train), (x_test, y_test) =imdb.load_data(num_words=10000)
+print(x_train.shape)
 
 
+model = models.Sequential()
+model.add(layers.Dense(16, activation='relu', input_shape=(10000,)))
+model.add(layers.Dense(16, activation='relu'))
+model.add(layers.Dense(1, activation='sigmoid'))
 
-model = Sequential()
-
-
-model.add(Dense(input_shape=(len(x_train), ), units=256))
-model.add(Activation('relu'))
-model.add(Dense(units=128))
-model.add(Activation('relu'))
-model.add(Dense(1))
-model.add(Activation('softmax'))
-
-model.compile(loss='binary_crossentropy',
-              optimizer='adam',
+model.compile(optimizer='adam',
+              loss='binary_crossentropy',
               metrics=['accuracy'])
 
-model.fit(x_train, y_train, batch_size=batch_size)
+from keras import optimizers
+# 配置优化器
+model.compile(optimizer=optimizers.adam(lr=0.001),
+              loss='binary_crossentropy',
+              metrics=['accuracy'])
 
-score = model.evaluate(x_test, y_test, batch_size=batch_size)
-print(score)
+# 留出验证集
+x_val = x_train[:10000]
+partial_x_train = x_train[10000:]
+y_val = y_train[:10000]
+partial_y_train = y_train[10000:]
 
-
-
+history = model.fit(partial_x_train,
+                    partial_y_train,
+                    epochs=20,
+                    batch_size=512,
+                    validation_data=(x_val, y_val))
