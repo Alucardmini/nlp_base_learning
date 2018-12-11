@@ -175,27 +175,27 @@ model.summary()
 
 # Train the model each generation and show predictions against the validation
 # dataset.
-for iteration in range(1, 200):
-    print()
-    print('-' * 50)
-    print('Iteration', iteration)
-    model.fit(x_train, y_train,
-              batch_size=BATCH_SIZE,
-              epochs=1,
-              validation_data=(x_val, y_val))
-    # Select 10 samples from the validation set at random so we can visualize
-    # errors.
-    for i in range(10):
-        ind = np.random.randint(0, len(x_val))
-        rowx, rowy = x_val[np.array([ind])], y_val[np.array([ind])]
-        preds = model.predict_classes(rowx, verbose=0)
-        q = ctable.decode(rowx[0])
-        correct = ctable.decode(rowy[0])
-        guess = ctable.decode(preds[0], calc_argmax=False)
-        print('Q', q[::-1] if REVERSE else q, end=' ')
-        print('T', correct, end=' ')
-        if correct == guess:
-            print(colors.ok + '☑' + colors.close, end=' ')
-        else:
-            print(colors.fail + '☒' + colors.close, end=' ')
-        print(guess)
+# for iteration in range(1, 200):
+#     print()
+#     print('-' * 50)
+#     print('Iteration', iteration)
+#     model.fit(x_train, y_train,
+#               batch_size=BATCH_SIZE,
+#               epochs=1,
+#               validation_data=(x_val, y_val))
+#     # Select 10 samples from the validation set at random so we can visualize
+#     # errors.
+#     for i in range(10):
+#         ind = np.random.randint(0, len(x_val))
+#         rowx, rowy = x_val[np.array([ind])], y_val[np.array([ind])]
+#         preds = model.predict_classes(rowx, verbose=0)
+#         q = ctable.decode(rowx[0])
+#         correct = ctable.decode(rowy[0])
+#         guess = ctable.decode(preds[0], calc_argmax=False)
+#         print('Q', q[::-1] if REVERSE else q, end=' ')
+#         print('T', correct, end=' ')
+#         if correct == guess:
+#             print(colors.ok + '☑' + colors.close, end=' ')
+#         else:
+#             print(colors.fail + '☒' + colors.close, end=' ')
+#         print(guess)
