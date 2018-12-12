@@ -7,9 +7,14 @@ from keras.preprocessing import sequence
 from keras.datasets import imdb
 from keras.models import Model
 from keras.layers import *
-from attention.src.attention_keras import Position_Embedding
-# from attention.src.attention_keras import Attention
-from attention.src.custom_attention import Attention
+
+try:
+
+    from src.attention_keras import Position_Embedding
+    from src.attention_keras import Attention
+except:
+    from attention.src.attention_keras import Attention
+    from attention.src.attention_keras import Position_Embedding
 
 maxfeature = 20000
 batch_size = 32
@@ -26,9 +31,12 @@ O_seq = Attention(8, 16)([embeddings, embeddings, embeddings])
 # O_seq = GlobalAveragePooling1D()(O_seq)
 O_seq = GlobalMaxPool1D()(O_seq)
 O_seq = Dropout(0.5)(O_seq)
+# O_seq = MyLayer(10)(O_seq)
+
 outputs = Dense(1, activation='sigmoid')(O_seq)
 
 model = Model(s_inputs, outputs)
+
 model.compile(loss='binary_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
