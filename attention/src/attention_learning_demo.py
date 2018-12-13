@@ -75,9 +75,10 @@ def print_tensor(tf_input_data):
 # res = K.batch_dot(x, y, axes=[2, 1])
 # print(res)
 
-x = tf.Variable(np.array(range(6)).reshape(2, 3), dtype=tf.float32)
-y = tf.Variable(np.array(range(3)).reshape(3, 1), dtype=tf.float32)
+x = tf.Variable(np.array(range(12)).reshape(2, 2, 3), dtype=tf.float32)
+y = tf.Variable(np.array(range(12)).reshape(2, 3, 2), dtype=tf.float32)
+print_tensor(x)
 print_tensor(y)
-res = K.batch_dot(x, y, axes=[1, 0])
+res = K.batch_dot(x, y, axes=[2, 0])
 print_tensor(res)
 

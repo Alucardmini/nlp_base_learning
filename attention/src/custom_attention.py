@@ -8,135 +8,63 @@ from keras.models import Model
 from keras import backend as K
 from keras.engine.topology import Layer
 
-# class Position_embedding(Layer):
-#     pass
-#
-# class Attention(Layer):
-#
-#     def __init__(self, nb_head, size_per_head, **kwargs):
-#         super(Attention, self).__init__(**kwargs)
-#         self.nb_head = nb_head
-#         self.size_per_head = size_per_head
-#         self.output_dim = nb_head*size_per_head
-#
-#     def build(self, input_shape):
-#         self.WQ = self.add_weight(name='WQ',
-#                                   shape=(input_shape[0][-1], self.output_dim),
-#                                   initializer='glorot_uniform',
-#                                   trainable=True)
-#         self.WK = self.add_weight(name='WK',
-#                                   shape=(input_shape[1][-1], self.output_dim),
-#                                   initializer='glorot_uniform',
-#                                   trainable=True)
-#         self.WV = self.add_weight(name='WV',
-#                                   shape=(input_shape[2][-1], self.output_dim),
-#                                   initializer='glorot_uniform',
-#                                   trainable=True)
-#         super(Attention, self).build(input_shape)
-#
-#     def Mask(self, inputs, seq_len, mode='mul'):
-#         if seq_len == None:
-#             return inputs
-#         else:
-#             mask = K.one_hot(seq_len[:, 0], K.shape(inputs)[1])
-#             mask = 1 - K.cumsum(mask, 1)
-#             for _ in range(len(inputs.shape) - 2):
-#                 mask = K.expand_dims(mask, 2)
-#             if mode == 'mul':
-#                 return inputs*mask
-#             if mode == 'add':
-#                 return inputs - (1 - mask) * 1e12
-#
-#     def call(self, inputs, **kwargs):
-#
-#         if len(inputs) == 3:  # self attention
-#             Q_seq, K_seq, V_seq = inputs
-#             Q_len, V_len = None, None
-#         elif len(inputs) == 5:
-#             Q_seq, k_seq, V_seq, Q_len, V_len = inputs
-#
-#         Q_seq = K.dot(Q_seq, self.WQ)
-#         Q_seq = K.reshape(Q_seq, (-1, K.shape(Q_seq)[1], self.nb_head, self.size_per_head))
-#         Q_seq = K.permute_dimensions(Q_seq, (0, 2, 1, 3))
-#         K_seq = K.dot(K_seq, self.WK)
-#         K_seq = K.reshape(K_seq, (-1, K.shape(K_seq)[1], self.nb_head, self.size_per_head))
-#         K_seq = K.permute_dimensions(K_seq, (0, 2, 1, 3))
-#         V_seq = K.dot(V_seq, self.WV)
-#         V_seq = K.reshape(V_seq, (-1, K.shape(V_seq)[1], self.nb_head, self.size_per_head))
-#         V_seq = K.permute_dimensions(V_seq, (0, 2, 1, 3))
-#         # 计算内积
-#         A = K.batch_dot(Q_seq, K_seq, axes=[3, 3])
-#         A = K.permute_dimensions(A, (0, 3, 2, 1))
-#         A = self.Mask(A, V_len, 'add')
-#         A = K.permute_dimensions(A, (0, 3, 2, 1))
-#         A = K.softmax(A)
-#
-#         O_seq = K.batch_dot(A, V_seq, axes=[3, 2])
-#         O_seq = K.permute_dimensions(O_seq, (0, 2, 1, 3))
-#         O_seq = K.reshape(O_seq, (-1, K.shape(O_seq)[1], self.output_dim))
-#         O_seq = self.Mask(O_seq, Q_len, 'mul')
-#         return O_seq
-#
-#     def compute_output_shape(self, input_shape):
-#         return (input_shape[0][1], input_shape[0][1], self.output_dim)
 
 class Attention(Layer):
 
     def __init__(self, nb_head, size_per_head, **kwargs):
         self.nb_head = nb_head
         self.size_per_head = size_per_head
-        self.output_dim = nb_head * size_per_head
+        self.output_dim = self.nb_head * self.size_per_head
         super(Attention, self).__init__(**kwargs)
-
 
     def build(self, input_shape):
 
         self.WQ = self.add_weight(name='wq',
-                                  shape=(input_shape[0][-1]),
-                                  initializer='glorot_uniform',
-                                  trainable=True)
-
+                                  shape=(input_shape[0][-1], self.output_dim),
+                                  trainable=True,
+                                  initializer='glorot_uniform')
         self.WK = self.add_weight(name='wk',
-                                  shape=(input_shape[1][-1]),
-                                  initializer='glorot_uniform',
-                                  trainable=True)
+                                  shape=(input_shape[1][-1], self.output_dim),
+                                  trainable=True,
+                                  initializer='glorot_uniform')
         self.WV = self.add_weight(name='wv',
-                                  shape=(input_shape[2][-1]),
-                                  initializer='glorot_uniform',
-                                  trainable=True)
+                                  shape=(input_shape[2][-1], self.output_dim),
+                                  trainable=True,
+                                  initializer='glorot_uniform')
 
-        super(Attention, self).built(input_shape)
+        super(Attention, self).build(input_shape)
 
     def call(self, inputs, **kwargs):
+
         if len(inputs) == 3:
-            Q_seq, K_seq, V_seq = inputs
+            q_seq, v_seq, k_seq = inputs
 
-        Q_seq = K.dot(Q_seq, self.WQ)
-        K_seq = K.dot(K_seq, self.WK)
-        V_seq = K.dot(V_seq, self.Wv)
+        q_seq = K.dot(q_seq, self.WQ)  # shape = (batchz_size, m, 128)
+        k_seq = K.dot(k_seq, self.WK)
+        v_seq = K.dot(v_seq, self.WV)  # shape = (batchz_size, m, 128)
 
-        Q_seq = K.reshape(Q_seq, (-1, K.shape(Q_seq)[1], self.nb_head, self.size_per_head))
-        K_seq = K.reshape(K_seq, (-1, K.shape(K_seq)[1], self.nb_head, self.size_per_head))
-        V_seq = K.reshape(V_seq, (-1, K.shape(V_seq)[1], self.nb_head, self.size_per_head))
+        q_seq = K.reshape(q_seq, (-1, K.shape(q_seq)[1], self.nb_head, self.size_per_head))
+        k_seq = K.reshape(k_seq, (-1, K.shape(k_seq)[1], self.nb_head, self.size_per_head))
+        v_seq = K.reshape(v_seq, (-1, K.shape(v_seq)[1], self.nb_head, self.size_per_head))  # (? ? 8 16)
 
-        Q_seq = K.permute_dimensions(Q_seq, (0, 2, 1, 3))
-        K_seq = K.permute_dimensions(K_seq, (0, 2, 1, 3))
-        V_seq = K.permute_dimensions(V_seq, (0, 2, 1, 3))
-
-        QK = K.batch_dot(Q_seq, K_seq, axes=[3, 3])
-        QK = K.permute_dimensions(QK, (0, 3, 2, 1))
-        # mask
-        QK = K.softmax(QK)
-
-        output = K.dot(QK, V_seq, axes=[3, 2])
-        output = K.permute_dimensions(output, (0, 2, 1, 3))
-        output = K.reshape(output, (-1, K.shape(output)[1], self.output_dim))
-        return output
+        q_seq = K.permute_dimensions(q_seq, (0, 2, 1, 3))
+        k_seq = K.permute_dimensions(k_seq, (0, 2, 1, 3))
+        v_seq = K.permute_dimensions(v_seq, (0, 2, 1, 3))  # (?, 8, ?, 16)
 
 
+        QK = K.batch_dot(k_seq, q_seq, axes=(3, 3)) / self.size_per_head**0.5  # shape = (?, 8, ?, ?)
+        A = K.softmax(QK)
+
+        # 输出并mask
+        O_seq = K.batch_dot(A, v_seq, axes=[3, 2])  # softmax(Q * K ,mask ) * V
+        O_seq = K.permute_dimensions(O_seq, (0, 2, 1, 3))
+        O_seq = K.reshape(O_seq, (-1, K.shape(O_seq)[1], self.output_dim))
+
+        return O_seq
 
 
 
 
     def compute_output_shape(self, input_shape):
         return (input_shape[0][0], input_shape[0][1], self.output_dim)
+
