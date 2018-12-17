@@ -25,8 +25,8 @@
       <file leaf-file-name="seq2seq_EN2Chinese.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/seq2seq_EN2Chinese.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="80" column="15" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="15" />
+            <state relative-caret-position="178">
+              <caret line="81" column="37" lean-forward="true" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
               <folding>
                 <element signature="e#150#188#0" expanded="true" />
               </folding>
@@ -37,7 +37,7 @@
       <file leaf-file-name="seq2seq_en2franch.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seq2seq_en2franch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
+            <state relative-caret-position="372">
               <caret line="128" column="73" lean-forward="false" selection-start-line="128" selection-start-column="73" selection-end-line="128" selection-end-column="73" />
               <folding />
             </state>
@@ -598,7 +598,7 @@
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31460676" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1651,7 +1651,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/seq2seq_en2franch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
+        <state relative-caret-position="372">
           <caret line="128" column="73" lean-forward="false" selection-start-line="128" selection-start-column="73" selection-end-line="128" selection-end-column="73" />
           <folding />
         </state>
@@ -1659,8 +1659,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/seq2seq_EN2Chinese.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="80" column="15" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="15" />
+        <state relative-caret-position="178">
+          <caret line="81" column="37" lean-forward="true" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
           <folding>
             <element signature="e#150#188#0" expanded="true" />
           </folding>

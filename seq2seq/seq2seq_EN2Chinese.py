@@ -79,7 +79,8 @@ for t, (input_text, target_text) in enumerate(zip(input_texts, target_texts)):
 
 encoder_inputs = Input(shape=(None, num_encoder_tokens))
 encoder_outputs, state_h, state_c = LSTM(latent_dim, return_state=True)(encoder_inputs)
-encoder_states = [state_h, state_c]
+# encoder_states = [state_h, state_c]
+encoder_states = [encoder_outputs, state_c]
 
 decoder_inputs = Input(shape=(None, num_decoder_tokens))
 decoder_outputs, _, __ = LSTM(latent_dim, return_state=True, return_sequences=True)(decoder_inputs, initial_state=encoder_states)
