@@ -5,3 +5,5 @@ learing NLP step by step
 ### 2018-11-28 增加新词发现工程
 
 ### 2018-12-13 增加attention
+
+### 2018-12-14 增加seq2seq
