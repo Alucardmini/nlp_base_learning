@@ -11,11 +11,11 @@ import numpy as np
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 imgWidth = x_train.shape[1]
 
-train_size = 2000
-test_size = 200
+train_size = -1
+test_size = 10
 batch_size = 50
 np_classes = 10
-nb_epochs = 1001
+nb_epochs = 10001
 
 x_train = x_train[0:train_size]
 y_train = y_train[0:train_size]
@@ -30,15 +30,35 @@ y_test = np_utils.to_categorical(y_test, np_classes)
 
 x = tf.placeholder("float", [None, 784])
 y = tf.placeholder("float", [None, 10])
-W_1 = tf.Variable(tf.zeros([784, 64]), trainable=True)
-b_1 = tf.Variable(tf.zeros([64]), trainable=True)
-# y_1 = tf.matmul(x, W_1) + b_1
 
-W = tf.Variable(tf.zeros([64, 10]))
-b = tf.Variable(tf.zeros([10]))
-y_pred = tf.nn.softmax(tf.matmul(tf.matmul(x, W_1) + b_1, W) + b)
 
-cross_entropy = -tf.reduce_sum(y*tf.log(y_pred))
+def add_layer(inputs, in_size, out_size, activation_function=None):
+
+    Weight = tf.Variable(tf.random_normal([in_size, out_size]))
+    bias = tf.Variable(tf.random_normal([1, out_size]))
+    wx_plus_b = tf.add(tf.matmul(inputs, Weight), bias)
+
+    if activation_function is None:
+        return wx_plus_b
+    else:
+        return activation_function(wx_plus_b)
+
+# h1 = add_layer(x, 784, 128, activation_function=tf.nn.relu)
+# y_pred = add_layer(h1, 128, 10, activation_function=tf.nn.softmax)
+
+y_pred = add_layer(x, 784, 10, activation_function=tf.nn.softmax)
+
+# W_1 = tf.Variable(tf.zeros([784, 64]), trainable=True)
+# b_1 = tf.Variable(tf.zeros([64]), trainable=True)
+# # y_1 = tf.matmul(x, W_1) + b_1
+# W = tf.Variable(tf.zeros([64, 10]))
+# b = tf.Variable(tf.zeros([10]))
+# y_pred = tf.nn.softmax(tf.matmul(tf.matmul(x, W_1) + b_1, W) + b)
+
+# cross_entropy = -tf.reduce_sum(y*tf.log(y_pred))
+
+cross_entropy = -tf.reduce_sum(y*tf.log(tf.clip_by_value(y_pred, 1e-10, 1.0)))
+
 train_step = tf.train.GradientDescentOptimizer(0.005).minimize(cross_entropy)
 
 correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_pred,1))

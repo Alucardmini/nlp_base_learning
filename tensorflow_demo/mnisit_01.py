@@ -11,7 +11,7 @@ import numpy as np
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 imgWidth = x_train.shape[1]
 
-train_size = 2000
+train_size = -1
 test_size = 200
 batch_size = 100
 np_classes = 10
@@ -53,7 +53,7 @@ with tf.Session() as sess:
             batch_y = y_train[(batch_index-1)* batch_size: max_index]
             sess.run(train_step, feed_dict={x: batch_x, y: batch_y})
 
-        # if i % 20 == 0:
+        if i % 20 == 0:
             print(sess.run(accuracy, feed_dict={x: x_test, y: y_test}))
 
 
